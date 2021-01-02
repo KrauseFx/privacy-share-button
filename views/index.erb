@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta name="viewport" content="initial-scale=1">
+</head>
+
+<body>
+    <p>
+        Proof of concept: detect when an iOS user hits the share button on your website on Safari.
+    </p>
+    <p>
+        Made by @KrauseFx, more details on <a href="https://krausefx.com">krausefx.com</a>
+    </p>
+    <div id="hitShareButton">
+        <h2>🚨 You hit the iOS share button 🚨</h2>
+    </div>
+
+    <script type="text/javascript">
+        function httpGetAsync(url, callback) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    callback(xmlHttp.responseText);
+                }
+            }
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+        }
+
+        setInterval(function() {
+            httpGetAsync("/didShare", function(res) {
+                if (res == "0") {
+                    return;
+                }
+                document.getElementById("hitShareButton").style.display = 'block'
+            });
+        }, 500);
+    </script>
+</body>
+<style type="text/css">
+    * {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+    }
+    
+    #hitShareButton {
+        width: 100%;
+        text-align: center;
+        height: 70px;
+        background-color: rgb(0, 204, 255);
+        display: none;
+        font-size: 98%;
+        border: 1px solid gray;
+    }
+</style>
+
+</html>
