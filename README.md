@@ -1,6 +1,8 @@
 # privacy-share-button
 
-Proof of concept: detect when an iOS user hits the share button on your website
+Proof of concept: detect when an iOS user hits the share button on your website.
+
+Full details on [krausefx.com](https://krausefx.com/blog/ios-privacy-safari-share-button)
 
 ## Setup
 
